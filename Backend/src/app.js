@@ -3,6 +3,7 @@ dotenv.config();
 import express from 'express'
 import authRouter from './routes/user.routes.js';
 import cookieParser from 'cookie-parser'
+import studentRouter from "./routes/students.routes.js"
 
 
 
@@ -13,6 +14,7 @@ app.use(cookieParser())
 
 
 app.use("/api/auth", authRouter)
+app.use("/api/students", studentRouter)
 
 
 

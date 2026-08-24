@@ -8,7 +8,6 @@ export const roleMiddleware = (...roles) => {
                 message: "Access denied"
             })
         }
-
         next()
     }
 }

@@ -1,15 +1,12 @@
-import { types } from "joi";
 import mongoose from "mongoose";
 
 const studentSchema = new mongoose.Schema(
     {
-        user: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
+        name: {
+            type: String,
             required: true,
-            unique: true
+            trim: true
         },
-
         studentId: {
             type: String,
             required: true,
@@ -17,7 +14,7 @@ const studentSchema = new mongoose.Schema(
             trim: true
         },
 
-        class: {
+        studentClass: {
             type: String,
             required: true,
             trim: true
@@ -32,6 +29,7 @@ const studentSchema = new mongoose.Schema(
 
         rollNumber: {
             type: Number,
+            unique: true,
             required: true
         },
 

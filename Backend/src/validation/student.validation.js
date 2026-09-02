@@ -1,23 +1,24 @@
 import Joi from "joi";
 
 export const createStudentSchema = Joi.object({
-    user: Joi.string()
-        .required(),
-
+    name: Joi.string()
+        .trim()
+        
+    ,
     studentId: Joi.string()
         .trim()
-        .required(),
+        ,
 
-    class: Joi.string()
+    studentClass: Joi.string()
         .trim()
-        .required(),
+        ,
 
     section: Joi.string()
         .trim()
-        .required(),
+        ,
 
     rollNumber: Joi.number()
-        .required(),
+        ,
 
     dateOfBirth: Joi.date(),
 

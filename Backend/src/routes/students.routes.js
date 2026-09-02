@@ -9,10 +9,7 @@ import {
     getStudentById,
     deleteStudent,
     updateStudent,
-    changeStatus
 } from '../controllers/student.controller.js';
-
-
 
 
 const router = express.Router();
@@ -29,14 +26,12 @@ router.post("/create",
 router.get("/get-all",
     authMiddleware,
     roleMiddleware("Admin", "Teacher"),
-    validate(createStudentSchema),
     getAllStudent);
 
 //get the student data by id
 router.get("/get/:id",
     authMiddleware,
     roleMiddleware("Admin", "Teacher", "Student"),
-    validate(createStudentSchema),
     getStudentById);
 
 //update the data of student
@@ -50,17 +45,7 @@ router.patch("/get/:id",
 router.delete("/get/:id",
     authMiddleware,
     roleMiddleware("Admin"),
-    validate(createStudentSchema),
     deleteStudent);
-
-//Change the Status of students active or not active
-router.patch("/get/:id/status",
-    authMiddleware,
-    roleMiddleware("Admin"),
-    validate(createStudentSchema),
-    changeStatus);
-
-
 
 
 

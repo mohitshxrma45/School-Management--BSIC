@@ -2,62 +2,7 @@ import User from "../models/user.model.js";
 import jwt from "jsonwebtoken";
 
 
-export const register = async (req, res) => {
-    try {
-        const { email, name, password } = req.body;
 
-        const isExist = await User.findOne({ email })
-
-        if (isExist) {
-            return res.status(422).json({
-                success: false,
-                message: "User already exists"
-            })
-        }
-
-        const user = new User({
-            email,
-            name,
-            password,
-        })
-
-        await user.save()
-
-        const token = jwt.sign(
-            {
-                _id: user._id,
-                role: user.role
-
-            },
-            process.env.JWT_SECRET,
-            { expiresIn: "7d" }
-        )
-
-        res.cookie("token", token, {
-            httpOnly: true,
-            sameSite: "none",
-            maxAge: 7 * 24 * 60 * 60 * 1000,
-            secure: true
-        });
-
-        return res.status(201).json({
-            success: true,
-            message: "User registered successfully",
-            user: {
-                _id: user._id,
-                name: user.name,
-                email: user.email,
-            },
-        })
-
-    } catch (error) {
-        return res.status(500).json({
-            success: false,
-            message: error.message
-        })
-
-    }
-}
 
 
 export const login = async (req, res) => {

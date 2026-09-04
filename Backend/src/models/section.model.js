@@ -2,13 +2,13 @@ import mongoose from 'mongoose'
 
 const sectionSchema = new mongoose.Schema(
     {
-        name: {
+        sectionName: {
             type: String,
             required: true,
             trim: true
         },
 
-        class: {
+        className: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Class",
             required: true

@@ -5,9 +5,9 @@ export const createClass = async (req, res) => {
 
     try {
 
-        const { name } = req.body;
+        const { className } = req.body;
 
-        const isExist = await Class.findOne({ name });
+        const isExist = await Class.findOne({ className });
 
         if (isExist) {
             return res.status(422).json({
@@ -17,19 +17,19 @@ export const createClass = async (req, res) => {
         }
 
         const classNumber = await Class.create({
-            name
+            className
         })
 
         return res.status(201).json({
             success: true,
-            message: "Class created successfully"
+            message: "Class created successfully",
+            classNumber
         })
 
     } catch (error) {
         return res.status(500).json({
             success: false,
             message: error.message,
-            name
         })
     }
 }
@@ -44,8 +44,6 @@ export const getClass = async (req, res) => {
             message: "All classes fetched successfully ",
             totalClass
         })
-
-
 
     } catch (error) {
         return res.status(500).json({

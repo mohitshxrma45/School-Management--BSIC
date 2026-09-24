@@ -5,7 +5,7 @@ import authRouter from './routes/user.routes.js';
 import cookieParser from 'cookie-parser'
 import studentRouter from "./routes/students.routes.js"
 import classRouter from "./routes/class.routes.js"
-import sectionRouter from "./routes/section.router.js"
+import sectionRouter from "./routes/section.routes.js"
 
 
 

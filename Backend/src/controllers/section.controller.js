@@ -30,15 +30,28 @@ export const createSection = async (req, res) => {
         return res.status(201).json({
             success: true,
             message: "Section created succeessfully ",
-            className,
-            sectionName
+            sectionCreate
         })
 
     } catch (error) {
         return res.status(500).json({
             success: false,
-            message: error.message
+            message: error.message,
+            sectionCreate
         })
+    }
+
+}
+
+export const getSection = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        return res.status(500).json({
+            success:false,
+            message:error.message
+        })
+        
     }
 
 }
